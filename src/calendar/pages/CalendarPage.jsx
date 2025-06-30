@@ -2,28 +2,19 @@
 import { Calendar } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-import { CalendarBox, CalendarModal, NavBar} from '../';
+import { CalendarBox, CalendarModal, FabAddNew, NavBar} from '../';
 import { localizer, getMessagesES } from '../../helpers';
-import { addHours  } from 'date-fns'
 import { useState } from 'react';
 
 import './style.css';
+import { useUiStore, useCalendarStore } from '../../Hooks';
 
-const events = [{
-  title: 'Fecha de cumpleaños',
-  notes: 'Debemos comprar el pastel',
-  start: new Date(),
-  end: addHours( new Date(), 2 ),
-    user: {
-      _id: '123',
-      name: 'Gibran Flores'
-    }
-
-}]
 
 export const CalendarPage = () => {
 
-  const [LastView, setLastView] = useState(localStorage.getItem('lastView') || 'week');
+  const { events, setActivateEvent } = useCalendarStore();
+  const { openDateModal } = useUiStore();
+  const [ LastView, setLastView ] = useState(localStorage.getItem('lastView') || 'week');
 
     const eventStyleGetter = ( event, start, end, isSelected ) => {
 
@@ -40,13 +31,14 @@ export const CalendarPage = () => {
   }
 
   const onDoubleClick = (event) => {
-    console.log({ DoubleClick: event});
+    // console.log({ DoubleClick: event});
+    openDateModal()
     
   }
 
     const onSelect = (event) => {
-    console.log({ Click: event});
-    
+    // console.log({ Click: event});
+    setActivateEvent( event );
   }
 
     const onViewChanged = (event) => {
@@ -76,6 +68,9 @@ export const CalendarPage = () => {
       />
 
       <CalendarModal/>
+
+      <FabAddNew/>
+
     </>
   )
 }
