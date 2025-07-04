@@ -73,5 +73,14 @@ button:focus-visible {
   font-size: 30px;
   padding: 25px;
   position: fixed;
-  right: 25px;
+  right: auto;
+}
+
+.fab-danger {
+  border-radius: 45%;
+  bottom: 25px;
+  font-size: 30px;
+  padding: 25px;
+  position: fixed;
+  left: auto;
 }

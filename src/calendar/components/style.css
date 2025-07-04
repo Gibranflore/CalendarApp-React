@@ -9,3 +9,22 @@
 .react-datepicker__input-container input {
     width: 100%;
 }
+
+.fab {
+  border-radius: 45%;
+  bottom: 25px;
+  font-size: 30px;
+  padding: 25px;
+  position: fixed;
+  right: 25px;
+}
+
+.fab-danger {
+  border-radius: 45%;
+  bottom: 25px;
+  font-size: 20px;
+  position: fixed;
+  left: 25px;
+  width: 50px;
+  height: 50px
+}
